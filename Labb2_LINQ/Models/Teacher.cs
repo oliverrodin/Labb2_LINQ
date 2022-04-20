@@ -8,11 +8,15 @@ namespace Labb2_LINQ.Models
 {
     public class Teacher
     {
+        public Teacher()
+        {
+            this.Courses = new HashSet<Course>();
+        }
         public int Id { get; set; }
         public string TeacherName { get; set; }
 
         //relations
-        public ICollection<Course_Teacher> Courses_Teachers { get; set; }
+        public ICollection<Course> Courses { get; set; }
 
     }
 }

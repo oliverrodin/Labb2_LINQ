@@ -3,6 +3,7 @@ using Labb2_LINQ.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labb2_LINQ.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220414075210_AddRealtionDataTeacherCourse")]
+    partial class AddRealtionDataTeacherCourse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,134 +25,17 @@ namespace Labb2_LINQ.Migrations
 
             modelBuilder.Entity("ClassCourse", b =>
                 {
-                    b.Property<int>("CourseId")
+                    b.Property<int>("ClassesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClassId")
+                    b.Property<int>("CoursesId")
                         .HasColumnType("int");
 
-                    b.HasKey("CourseId", "ClassId");
+                    b.HasKey("ClassesId", "CoursesId");
 
-                    b.HasIndex("ClassId");
+                    b.HasIndex("CoursesId");
 
                     b.ToTable("ClassCourse");
-
-                    b.HasData(
-                        new
-                        {
-                            CourseId = 1,
-                            ClassId = 1
-                        },
-                        new
-                        {
-                            CourseId = 2,
-                            ClassId = 1
-                        },
-                        new
-                        {
-                            CourseId = 3,
-                            ClassId = 1
-                        },
-                        new
-                        {
-                            CourseId = 7,
-                            ClassId = 1
-                        },
-                        new
-                        {
-                            CourseId = 10,
-                            ClassId = 1
-                        },
-                        new
-                        {
-                            CourseId = 11,
-                            ClassId = 1
-                        },
-                        new
-                        {
-                            CourseId = 9,
-                            ClassId = 1
-                        },
-                        new
-                        {
-                            CourseId = 8,
-                            ClassId = 1
-                        },
-                        new
-                        {
-                            CourseId = 1,
-                            ClassId = 2
-                        },
-                        new
-                        {
-                            CourseId = 2,
-                            ClassId = 2
-                        },
-                        new
-                        {
-                            CourseId = 3,
-                            ClassId = 2
-                        },
-                        new
-                        {
-                            CourseId = 10,
-                            ClassId = 2
-                        },
-                        new
-                        {
-                            CourseId = 3,
-                            ClassId = 3
-                        },
-                        new
-                        {
-                            CourseId = 4,
-                            ClassId = 3
-                        },
-                        new
-                        {
-                            CourseId = 5,
-                            ClassId = 3
-                        },
-                        new
-                        {
-                            CourseId = 6,
-                            ClassId = 3
-                        },
-                        new
-                        {
-                            CourseId = 1,
-                            ClassId = 3
-                        },
-                        new
-                        {
-                            CourseId = 4,
-                            ClassId = 4
-                        },
-                        new
-                        {
-                            CourseId = 5,
-                            ClassId = 4
-                        },
-                        new
-                        {
-                            CourseId = 6,
-                            ClassId = 4
-                        },
-                        new
-                        {
-                            CourseId = 7,
-                            ClassId = 4
-                        },
-                        new
-                        {
-                            CourseId = 9,
-                            ClassId = 4
-                        },
-                        new
-                        {
-                            CourseId = 10,
-                            ClassId = 4
-                        });
                 });
 
             modelBuilder.Entity("CourseTeacher", b =>
@@ -337,13 +222,13 @@ namespace Labb2_LINQ.Migrations
                 {
                     b.HasOne("Labb2_LINQ.Models.Class", null)
                         .WithMany()
-                        .HasForeignKey("ClassId")
+                        .HasForeignKey("ClassesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Labb2_LINQ.Models.Course", null)
                         .WithMany()
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("CoursesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Labb2_LINQ.Data.Context;
@@ -22,7 +23,7 @@ namespace Labb2_LINQ.Data
                 {
                     context.Classes.AddRange(new List<Class>()
                     {
-                        new Class() {ClassName = "Systemutvecklare.NET"},
+                        new Class() {ClassName = "Systemutvecklare.NET",  },
                         new Class() {ClassName = "Agil Javautvecklare"},
                         new Class() {ClassName = "Linux DevOps Engineer"},
                         new Class() {ClassName = "Etisk Hackare"}
@@ -30,6 +31,20 @@ namespace Labb2_LINQ.Data
 
                     context.SaveChanges();
 
+                }
+                if (!context.Teachers.Any())
+                {
+                    context.Teachers.AddRange(new List<Teacher>()
+                    {
+                        new Teacher(){TeacherName = "Tobias Landén"},
+                        new Teacher() {TeacherName = "Anas Alhussain"},
+                        new Teacher() {TeacherName = "Reidar Nilsen"},
+                        new Teacher() {TeacherName = "Anna Jansson"},
+                        new Teacher() {TeacherName = "Sofie Brännmark"},
+                        new Teacher() {TeacherName = "Greta Garbo"}
+                    });
+
+                    context.SaveChanges();
                 }
 
                 if (!context.Courses.Any())
@@ -53,20 +68,7 @@ namespace Labb2_LINQ.Data
                     context.SaveChanges();
                 }
 
-                if (!context.Teachers.Any())
-                {
-                    context.Teachers.AddRange(new List<Teacher>()
-                    {
-                        new Teacher(){TeacherName = "Tobias Landén"},
-                        new Teacher() {TeacherName = "Anas Alhussain"},
-                        new Teacher() {TeacherName = "Reidar Nilsen"},
-                        new Teacher() {TeacherName = "Anna Jansson"},
-                        new Teacher() {TeacherName = "Sofie Brännmark"},
-                        new Teacher() {TeacherName = "Greta Garbo"}
-                    });
 
-                    context.SaveChanges();
-                }
 
                 if (!context.Students.Any())
                 {
@@ -110,65 +112,9 @@ namespace Labb2_LINQ.Data
                     context.SaveChanges();
                 }
 
-                if (!context.Classes_Courses.Any())
-                {
-                    context.Classes_Courses.AddRange(new List<Class_Course>()
-                    {
-                        new Class_Course() {ClassId = 1, CourseId = 1},
-                        new Class_Course() {ClassId = 1, CourseId = 2},
-                        new Class_Course() {ClassId = 1, CourseId = 3},
-                        new Class_Course() {ClassId = 1, CourseId = 7},
-                        new Class_Course() {ClassId = 1, CourseId = 10},
-                        new Class_Course() {ClassId = 1, CourseId = 11},
+               
 
-                        new Class_Course() {ClassId = 2, CourseId = 1},
-                        new Class_Course() {ClassId = 2, CourseId = 2},
-                        new Class_Course() {ClassId = 2, CourseId = 3},
-                        new Class_Course() {ClassId = 2, CourseId = 11},
-                        new Class_Course() {ClassId = 2, CourseId = 7},
-                        new Class_Course() {ClassId = 2, CourseId = 4},
 
-                        new Class_Course() {ClassId = 3, CourseId = 4},
-                        new Class_Course() {ClassId = 3, CourseId = 5},
-                        new Class_Course() {ClassId = 3, CourseId = 6},
-                        new Class_Course() {ClassId = 3, CourseId = 8},
-                        new Class_Course() {ClassId = 3, CourseId = 9},
-                        new Class_Course() {ClassId = 3, CourseId = 10},
-
-                        new Class_Course() {ClassId = 4, CourseId = 1},
-                        new Class_Course() {ClassId = 4, CourseId = 8},
-                        new Class_Course() {ClassId = 4, CourseId = 7},
-                        new Class_Course() {ClassId = 4, CourseId = 9},
-                        new Class_Course() {ClassId = 4, CourseId = 6},
-                        new Class_Course() {ClassId = 4, CourseId = 5},
-                        new Class_Course() {ClassId = 4, CourseId = 4},
-                    });
-
-                    context.SaveChanges();
-                }
-
-                if (!context.Courses_Teachers.Any())
-                {
-                    context.Courses_Teachers.AddRange(new List<Course_Teacher>()
-                    {
-                        new Course_Teacher(){TeacherId = 1, CourseId = 9},
-                        new Course_Teacher(){TeacherId = 1, CourseId = 10},
-                        new Course_Teacher(){TeacherId = 1, CourseId = 11},
-                        new Course_Teacher(){TeacherId = 2, CourseId = 1},
-                        new Course_Teacher(){TeacherId = 2, CourseId = 2},
-                        new Course_Teacher(){TeacherId = 2, CourseId = 3},
-                        new Course_Teacher(){TeacherId = 3, CourseId = 7},
-                        new Course_Teacher(){TeacherId = 3, CourseId = 8},
-                        new Course_Teacher(){TeacherId = 4, CourseId = 4},
-                        new Course_Teacher(){TeacherId = 4, CourseId = 5},
-                        new Course_Teacher(){TeacherId = 5, CourseId = 6},
-                        new Course_Teacher(){TeacherId = 6, CourseId = 4},
-                        new Course_Teacher(){TeacherId = 6, CourseId = 5},
-                        new Course_Teacher(){TeacherId = 6, CourseId = 6},
-                    });
-
-                    context.SaveChanges();
-                }
             }
         }
     }
